@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Lab8; Can Shi; 322; mygrade; Jan 1, 2017; calculates grade in letters
+
+clear
+
+read -p "Enter assignment mark (0 to 40): " amark
+read -p "Enter Test1 mark (0 to 15): " t1mark
+read -p "Enter Test2 mark (0 to 15): " t2mark
+read -p "Enter Final Exam mark (0 to 30): " fmark
+(( total = amark + t1mark + t2mark + fmark ))
+
+echo
+echo
+case $total in
+
+[9][0-9]|[1][0][0]) echo "Your final grade is A+";;
+[8][5-9]) echo "Your final grade is A";;
+[8][0-4]) echo "Your final grade is A-";;
+[7][7-9]) echo "Your final grade is B+";;
+[7][3-6]) echo "Your final grade is B";;
+[7][0-2]) echo "Your final grade is B-";;
+[6][7-9]) echo "Your final grade is C+";;
+[6][3-6]) echo "Your final grade is C";;
+[6][0-2]) echo "Your final grade is C-";;
+[5][7-9]) echo "YOur final grade is D+";;
+[5][3-6]) echo "Your final grade is D";;
+[5][0-2]) echo "Your final grade is D-";;
+[0-9]|[1-4][0-9]) echo "Your final grade is F";;
+*) echo "Invalide grade";;
+esac
+

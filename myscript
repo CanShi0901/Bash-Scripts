@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# lab9; Can Shi; 040806036; 322; myscript; Jan 2, 2018; 
+
+clear
+
+choice=x
+
+while [ $choice != "Q" ] && [ $choice != "q" ];
+ do
+ echo "A nice litter program"
+ echo
+ echo "A) Create a user account"
+ echo "B) Delete a user account"
+ echo "C) Change supplementary group for a user account"
+ echo "D) Change initial group for a user account"
+ echo "E) Change default login shell for a user account"
+ echo "F) Change account expiration date for a user account"
+ echo "Q) Quit"
+ echo
+ read -p "Please enter your choice here: " choice
+ if [ "$choice" = "A" ] || [ "$choice" = "a" ]
+ then 
+ read -p "Please enter your username: " username
+ read -p "Please enter your home directory: " homedir
+ read -p "Please enter your default login shell: " shell
+ sudo useradd -d $homedir -s $shell $username
+
+ elif [ "$choice" = "B" ] || [ "$choice" = "b" ]
+ then 
+ read -p "Please enter the username you wish to delete: " userd
+ sudo userdel -r $userd
+
+ elif [ "$choice" = "C" ] || [ "$choice" = "c" ]
+ then
+ read -p "Please enter the username: " userm
+ read -p "Please enter the group name: " groupm
+ sudo usermod -G $groupm $userm
+
+ elif [ "$choice" = "D" ] || [ "$choice" = "d" ]
+ then
+ read -p "Please enter the username: " useri
+ read -p "Please enter the group name: " groupi
+ sudo usermod -g $groupi $useri
+
+ elif [ "$choice" = "E" ] || [ "$choice" = "e" ]
+ then
+ read -p "Please enter the username: " usere
+ read -p "Please enter the shell name: " shelle
+ sudo usermod -s $shelle $usere
+
+ elif [ "$choice" = "F" ] || [ "$choice" = "f" ]
+ then
+ read -p "Please enter the username: " userf
+ read -p "Please enter the expire date for this user(yyyy-mm-dd): " datef
+ sudo usermod -e $datef $userf
+ else
+ echo
+ fi
+ sleep 3
+
+done
+echo "Program has stopped"
+echo}
